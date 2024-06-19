@@ -620,7 +620,7 @@ map_palermo.on('load', () => {
 
     map_palermo.addSource('connections_pt_stops_palermo', {
         'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/knifontova/pt_interchanges/main/l_shortest_lines_palermo_cln.geojson'
+        'data': 'https://github.com/knifontova/interchanges_urban_nodes/blob/main/data/l_shortest_lines_palermo_cln.geojson'
     });
 
     map_palermo.addLayer({
