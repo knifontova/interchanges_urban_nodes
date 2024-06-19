@@ -666,7 +666,7 @@ map_palermo.on('load', () => {
 
     map_palermo.addSource('pt_stops_palermo', {
         'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/knifontova/pt_interchanges/main/p_palermo_PT_stops_allinfo_35N.geojson'
+        'data': 'https://github.com/knifontova/interchanges_urban_nodes/blob/main/data/p_palermo_PT_stops_allinfo_35N.geojson'
     });
 
     map_palermo.addLayer({
@@ -847,7 +847,7 @@ map_helsinki.on('load', () => {
 
     map_helsinki.addSource('pt_stops_helsinki', {
         'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/knifontova/pt_interchanges/main/p_helsinki_PT_stops_clipped_allinfo.geojson'
+        'data': 'https://github.com/knifontova/interchanges_urban_nodes/blob/main/data/p_helsinki_PT_stops_clipped_allinfo.geojson'
     });
 
     map_helsinki.addLayer({
