@@ -1,0 +1,182 @@
+.city_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 0.8fr auto;
+}
+
+.indices_container > div {
+  margin: 1vmin 0.5vmin;
+}
+
+.indices_name {
+  grid-column: 1;
+}
+
+.indices_value {
+  grid-column: 2;
+  font-size: 1.05em;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.indices_diagram {
+    grid-column: 1/3;
+}
+
+object.svg {
+  width: max(20vw,55vmin);
+  height: auto;
+}
+
+.legend {
+  grid-column: 1/3;
+}
+
+.legend img {
+  width: 2vmax;
+  height: 2vmax;
+}
+
+.legend_containter {
+  display: grid;
+  grid-template-columns: 0.2fr 0.6fr 0.2fr;
+  grid-template-rows: auto;
+  margin: 0.5vmin 0;
+}
+
+@media (min-width: 1201px) {
+  main {
+    font-size: 100%;
+  }
+
+  .main_container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  #palermo_part {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #helsinki_part {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .map {
+    width: 70vmin;
+    height: 70vmin;
+    border-radius: 0.3vmin;
+  }
+
+  .indices_container {
+    display: grid;
+    grid-template-columns: 0.5fr 0.3fr;
+    grid-template-rows: auto;
+    grid-gap: 1vmin;
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .maplibregl-popup-content {
+    width: 45vmin;
+    font-size: 100%;
+  }
+}
+
+/* Tablet view */
+@media (max-width: 1200px) and (min-width: 601px) {
+  main {
+    font-size: 100%;
+  }
+
+  .main_container {
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-rows: auto auto;
+  }
+
+  #palermo_part {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #helsinki_part {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .map {
+    width: 80vmin;
+    height: 80vmin;
+    border-radius: 0.3vmin;
+  }
+
+  .indices_container {
+    display: grid;
+    grid-template-columns: 0.65fr 0.3fr;
+    grid-template-rows: auto;
+    grid-gap: 1vmin;
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .maplibregl-popup-content {
+    width: 37.5vmin;
+    font-size: 90%;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 600px) {
+  main {
+    font-size: 80%;
+  }
+
+  .main_container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 0.5fr;
+  }
+
+  #palermo_part {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #helsinki_part {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .map {
+    width: 90vmin;
+    height: 90vmin;
+    border-radius: 0.3vmin;
+  }
+
+  .indices_container {
+    display: grid;
+    grid-template-columns: 0.65fr 0.3fr;
+    grid-template-rows: auto;
+    grid-gap: 1vmin;
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .maplibregl-popup-content {
+    width: 30vmin;
+    font-size: 80%;
+  }
+}

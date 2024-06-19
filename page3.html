@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="author" content="Kseniia Nifontova, Athina Georgiadi, Laure-Anne Gueguen">
+      <meta name="description" content="Web Mapping Group Assignment, page 3">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Public Transport Interchanges | Web Mapping project</title>
+
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style_third.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    </head>
+    <body class="container">
+      <header>
+        <h2>Public Transport Interchanges as Nodes of Urban Networks</h2>
+      </header>
+      <nav class="nav_container">
+        <div><a href="index.html">Main Page</a></div>
+        <div><a href="page2.html">Helsinki&Palermo Interchanges</a></div>
+        <div class="active"><a href="page3.html">About the research</a></div>
+      </nav>
+      <main class="main_container">
+        <div id="methodology">
+          <h3>Research description</h3>
+          <p>
+            The research investigates the interchanges between public transport stops
+            in two European cities, Palermo and Helsinki. For the purpose of this study,
+            an <mark>interchange</mark> is defined as a connection between two stops,
+            where the routes serviced by these stops do not completely coincide.
+          </p>
+          <p>Two main indicators were calculated:
+            <ul>
+              <li>the number of interchanges from one stop to other stops around</li>
+              <li>length of connections between interchanges stops</li>
+            </ul>
+          </p>
+          <p> We focused only on bus and tram stops to narrow the scope and make the research more manageable.
+            Stops were connected if they fell within a radius of 500 m (5-6 minutes
+            of pedestrian travel) and had at least 1 different route.</p>
+            <p>The indicators were calculated using GTFS data, a standard for public
+              transportation schedules, and analyzed with QGIS.</p>
+        </div>
+        <div id="data_sources">
+          <h3>Data sources</h3>
+          <ul>
+            <li>GTFS data from <a href="https://transitfeeds.com/">Open Mobility data</a></li>
+            <li>Basemap layers from <a href="https://wheregroup.com/blog/details/vector-tiles-und-qgis/">OpenMapTiles</a> styled with Maputnik</li>
+            <li>Population data from <a href="https://www.citypopulation.de/">City Population - Population Statistics in Maps and Charts for Cities, Agglomerations and Administrative Divisions of all Countries of the World</a></li>
+            <li>Bryniarska, Z., & Zakowska, L. (2017). Multi-criteria evaluation of public transport interchanges. Transportation Research Procedia, 24, 25-32.</li>
+          </ul>
+        </div>
+      </main>
+      <footer>
+        <div><b>Authors:</b> Kseniia Nifontova, Athina Georgiadi, Laure-Anne Gueguen</div>
+      </footer>
+    </body>
+</html>

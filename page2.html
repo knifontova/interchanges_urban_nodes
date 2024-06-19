@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="author" content="Kseniia Nifontova, Athina Georgiadi, Laure-Anne Gueguen">
+      <meta name="description" content="Web Mapping Group Assignment, page 2">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Public Transport Interchanges | Web Mapping project</title>
+
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style_second.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+      <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css' />
+      <script src='https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.js'></script>
+    </head>
+    <body class="container">
+      <header>
+        <h2>Public Transport Interchanges as Nodes of Urban Networks</h2>
+      </header>
+      <nav class="nav_container">
+        <div><a href="index.html">Main Page</a></div>
+        <div class="active"><a href="page2.html">Helsinki&Palermo Interchanges</a></div>
+        <div><a href="page3.html">About the research</a></div>
+      </nav>
+      <main class="main_container">
+        <div class="city_container" id="palermo_part">
+          <h3>Palermo, Italy</h3>
+          <div class="map" id="map_palermo"></div>
+          <div class="indices_container">
+            <div class="legend" id="legend_palermo">
+              <div class="legend_containter">
+                <img src="images/legend_less100.svg" alt="less100" />
+                <div>less than 100 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_less100" checked onchange="distance_filter_palermo('toggle_less100', this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="legend_containter">
+                <img src="images/legend_100_200.svg" alt="100_200" alt="less100" />
+                <div>from 100 to 200 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_100_200" checked onchange="distance_filter_palermo('toggle_100_200', this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="legend_containter">
+                <img src="images/legend_200_300.svg" alt="200_300" />
+                <div>from 200 to 300 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_200_300" checked onchange="distance_filter_palermo('toggle_200_300', this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="legend_containter">
+                <img src="images/legend_300_400.svg" alt="300_400" />
+                <div>from 300 to 400 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_300_400" checked onchange="distance_filter_palermo('toggle_300_400', this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="legend_containter">
+                <img src="images/legend_400_500.svg" alt="400_500" />
+                <div>from 400 to 500 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_more_400" checked onchange="distance_filter_palermo('toggle_more_400', this.checked)">
+                  <span the="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="indices_name">Population: </div>
+            <div class="indices_value">674 500 (2023, estimated)</div>
+            <div class="indices_name">Area: </div>
+            <div class="indices_value">214.3 km²</div>
+            <div class="indices_name">Number of stops: </div>
+            <div class="indices_value">1710</div>
+            <div class="indices_name">Median number of interchanges per stop: </div>
+            <div class="indices_value">3</div>
+            <div class="indices_name">Median interchange length per stop: </div>
+            <div class="indices_value">353 m</div>
+            <div class="indices_diagram">
+              <h4>Distribution between different interchange lengths</h4>
+              <object class="svg" data="images/palermo_diagram.svg"></object>
+            </div>
+          </div>
+        </div>
+        <div class="city_container" id="helsinki_part">
+          <h3>Helsinki, Finland</h3>
+          <div class="map" id="map_helsinki">
+            <script src="main.js"></script>
+          </div>
+          <div class="indices_container">
+            <div class="legend" id="legend_helsinki">
+              <div class="legend_containter">
+                <img src="images/legend_less100.svg" alt="less100" />
+                <div>less than 100 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_less100_h" checked onchange="distance_filter_helsinki('toggle_less100_h', this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="legend_containter">
+                <img src="images/legend_100_200.svg" alt="100_200" alt="less100" />
+                <div>from 100 to 200 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_100_200_h" checked onchange="distance_filter_helsinki('toggle_100_200_h', this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="legend_containter">
+                <img src="images/legend_200_300.svg" alt="200_300" />
+                <div>from 200 to 300 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_200_300_h" checked onchange="distance_filter_helsinki('toggle_200_300_h', this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="legend_containter">
+                <img src="images/legend_300_400.svg" alt="300_400" />
+                <div>from 300 to 400 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_300_400_h" checked onchange="distance_filter_helsinki('toggle_300_400_', this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="legend_containter">
+                <img src="images/legend_400_500.svg" alt="400_500" />
+                <div>from 400 to 500 m</div>
+                <label class="switch">
+                  <input type="checkbox" id="toggle_more_400_h" checked onchange="distance_filter_helsinki('toggle_more_400_', this.checked)">
+                  <span the="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="indices_name">Population: </div>
+            <div class="indices_value">628 894 (2024, evaluated)</div>
+            <div class="indices_name">Area: </div>
+            <div class="indices_value">160.6 km²</div>
+            <div class="indices_name">Number of stops: </div>
+            <div class="indices_value">2723</div>
+            <div class="indices_name">Median number of interchanges per stop: </div>
+            <div class="indices_value">7</div>
+            <div class="indices_name">Median interchange length per stop: </div>
+            <div class="indices_value">251 m</div>
+            <div class="indices_diagram">
+              <h4>Distribution between different interchange lengths</h4>
+              <object class="svg" data="images/helsinki_diagram.svg"></object>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div><b>Authors:</b> Kseniia Nifontova, Athina Georgiadi, Laure-Anne Gueguen</div>
+      </footer>
+    </body>
+</html>

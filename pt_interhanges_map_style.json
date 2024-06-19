@@ -1,0 +1,300 @@
+{
+  "version": 8,
+  "name": "PT_interhanges_map_style",
+  "metadata": {"maputnik:renderer": "mlgljs"},
+  "light": {"anchor": "viewport"},
+  "sources": {
+    "OpenMapTiles": {
+      "type": "vector",
+      "url": "https://wms.wheregroup.com/tileserver/tile/world-0-14.json"
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "layout": {"visibility": "visible"},
+      "paint": {"background-color": "#f7f7f7"}
+    },
+    {
+      "id": "green_area",
+      "type": "fill",
+      "source": "OpenMapTiles",
+      "source-layer": "landcover",
+      "filter": ["any", ["==", "subclass", "wood"], ["==", "subclass", "park"]],
+      "layout": {"visibility": "visible"},
+      "paint": {"fill-color": "#ededed", "fill-opacity": 0.8}
+    },
+    {
+      "id": "water_line",
+      "type": "line",
+      "source": "OpenMapTiles",
+      "source-layer": "waterway",
+      "filter": ["all", ["==", "$type", "LineString"]],
+      "layout": {"visibility": "visible"},
+      "paint": {"line-color": "#dbdbdc"}
+    },
+    {
+      "id": "water_body",
+      "type": "fill",
+      "source": "OpenMapTiles",
+      "source-layer": "water",
+      "filter": ["all", ["!=", "brunnel", "tunnel"]],
+      "layout": {"visibility": "visible"},
+      "paint": {"fill-color": "#dbdbdc"}
+    },
+    {
+      "id": "water_label",
+      "type": "symbol",
+      "source": "OpenMapTiles",
+      "source-layer": "waterway",
+      "minzoom": 12,
+      "filter": ["all", ["==", "class", "river"]],
+      "layout": {
+        "symbol-placement": "line-center",
+        "text-font": ["Open Sans Italic"],
+        "text-field": "{name_en}",
+        "text-size": {"stops": [[12, 8], [16, 16], [20, 25]]},
+        "text-padding": 50,
+        "text-pitch-alignment": "viewport",
+        "symbol-avoid-edges": false
+      },
+      "paint": {
+        "text-color": "rgba(172, 173, 174, 0.7)",
+        "text-translate-anchor": "map"
+      }
+    },
+    {
+      "id": "railway",
+      "type": "line",
+      "source": "OpenMapTiles",
+      "source-layer": "transportation",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "rail"],
+        ["!=", "brunnel", "tunnel"]
+      ],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          13,
+          "hsl(220, 0%, 93%)",
+          17,
+          "hsl(220, 0%, 87%)"
+        ],
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          12,
+          0.5,
+          20,
+          1
+        ]
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill",
+      "source": "OpenMapTiles",
+      "source-layer": "building",
+      "minzoom": 15,
+      "filter": ["all"],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-color": "#e8e8e8",
+        "fill-opacity": 0.8,
+        "fill-outline-color": "#c7c7c7",
+        "fill-translate-anchor": "map"
+      }
+    },
+    {
+      "id": "street_pedestrian",
+      "type": "line",
+      "source": "OpenMapTiles",
+      "source-layer": "transportation",
+      "minzoom": 10,
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "subclass", "pedestrian"]
+      ],
+      "layout": {
+        "line-join": "round",
+        "line-cap": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(220, 1%, 100%)",
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          14,
+          0.5,
+          18,
+          12
+        ],
+        "line-opacity": 1
+      }
+    },
+    {
+      "id": "street",
+      "type": "line",
+      "source": "OpenMapTiles",
+      "source-layer": "transportation",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        ["!=", "class", "transit"],
+        ["!=", "class", "rail"],
+        ["==", "$type", "LineString"],
+        ["!=", "class", "path"],
+        ["!=", "class", "track"],
+        ["!=", "class", "path_construction"],
+        ["!=", "class", "service"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-opacity": 1,
+        "line-color": "hsl(220, 1%, 100%)",
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          5,
+          [
+            "match",
+            ["get", "class"],
+            ["motorway", "trunk", "primary"],
+            0.5,
+            ["secondary", "tertiary"],
+            0.06,
+            0
+          ],
+          13,
+          [
+            "match",
+            ["get", "class"],
+            ["motorway", "trunk", "primary"],
+            2.4,
+            ["secondary", "tertiary"],
+            1.5,
+            [
+              "motorway_link",
+              "trunk_link",
+              "primary_link",
+              "street",
+              "street_limited"
+            ],
+            0.6,
+            0.3
+          ],
+          18,
+          [
+            "match",
+            ["get", "class"],
+            ["motorway", "trunk", "primary"],
+            19.2,
+            ["secondary", "tertiary"],
+            15.6,
+            [
+              "motorway_link",
+              "trunk_link",
+              "primary_link",
+              "street",
+              "street_limited"
+            ],
+            10.8,
+            6
+          ],
+          22,
+          [
+            "match",
+            ["get", "class"],
+            ["motorway", "trunk", "primary"],
+            192,
+            ["secondary", "tertiary"],
+            156,
+            [
+              "motorway_link",
+              "trunk_link",
+              "primary_link",
+              "street",
+              "street_limited"
+            ],
+            108,
+            60
+          ]
+        ]
+      }
+    },
+    {
+      "id": "street_label",
+      "type": "symbol",
+      "source": "OpenMapTiles",
+      "source-layer": "transportation_name",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        ["!=", "class", "transit"],
+        ["!=", "class", "rail"],
+        ["!=", "class", "track"],
+        ["!=", "class", "path"],
+        ["!=", "class", "path_construction"],
+        ["!=", "class", "service"]
+      ],
+      "layout": {
+        "text-field": "{name_en}",
+        "visibility": "visible",
+        "text-font": ["Open Sans Regular"],
+        "symbol-placement": "line-center",
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          10,
+          [
+            "match",
+            ["get", "class"],
+            ["motorway", "trunk", "primary", "secondary", "tertiary"],
+            10,
+            9
+          ],
+          18,
+          [
+            "match",
+            ["get", "class"],
+            ["motorway", "trunk", "primary", "secondary", "tertiary"],
+            16,
+            14
+          ]
+        ],
+        "symbol-spacing": 200,
+        "symbol-avoid-edges": true,
+        "symbol-z-order": "source",
+        "text-ignore-placement": false,
+        "text-letter-spacing": 0.1,
+        "text-pitch-alignment": "viewport",
+        "text-max-angle": 30,
+        "text-padding": 5,
+        "text-rotation-alignment": "map"
+      },
+      "paint": {"text-color": "#7c7d7e"}
+    }
+  ],
+  "id": "evk7f70",
+  "owner": ""
+}
