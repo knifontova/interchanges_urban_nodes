@@ -758,7 +758,6 @@ map_palermo.on('mouseleave', 'pt_stops_layer_palermo', function () {
 	map_palermo.getCanvas().style.cursor = 'default';
 });
 
-// The following code was taken and adapted from the code I worked on at my previous job
 function check_toggles_palermo() {
   const toggles = ['toggle_less100', 'toggle_100_200', 'toggle_200_300', 'toggle_300_400', 'toggle_more_400'];
   toggles.forEach(toggle_id => {
